@@ -1,0 +1,9 @@
+pandoc: 3.1.11
+pkgdown: 2.1.1
+pkgdown_sha: ~
+articles:
+  Questionnaire: Questionnaire.html
+last_built: 2025-04-18T03:48Z
+urls:
+  reference: https://yangquan0310.github.io/tidyQuestionnaire/reference
+  article: https://yangquan0310.github.io/tidyQuestionnaire/articles
