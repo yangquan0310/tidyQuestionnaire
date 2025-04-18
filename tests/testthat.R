@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(QuestionnaireProcessing)
+library(tidyQuestionnaire)
 
-test_check("QuestionnaireProcessing")
+test_check("tidyQuestionnaire")

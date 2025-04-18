@@ -1,8 +1,8 @@
 ---
-title: "Questionnaire"
+title: "tidyQuestionnaire"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Questionnaire}
+  %\VignetteIndexEntry{tidyQuestionnaire}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup, eval=FALSE}
-library(QuestionnaireProcessing)
+library(tidyQuestionnaire)
 library(dplyr)
 ```
 
