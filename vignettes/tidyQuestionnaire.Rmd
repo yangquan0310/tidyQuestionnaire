@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 # Loading package
 ```{r setup}
-devtools::install.github("yangquan0310/tidyQuestionnaire")
+devtools::install_github("yangquan0310/tidyQuestionnaire")
 library(tidyQuestionnaire)
 library(dplyr)
 ```
