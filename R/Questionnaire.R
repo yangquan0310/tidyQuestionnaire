@@ -100,7 +100,10 @@ Questionnaire <- function(data,var){
         loadings
       },
       Fitmeasures = function(index=c("chisq","df","pvalue","cfi","tli","rmsea","srmr") ){
-        fitmeasures=semTools::fitMeasures(private$CFA,index=index)
+        if(is.null(private$CFA)){
+          stop("请先运行CFA")
+        }
+        fitmeasures=semTools::fitMeasures(private$CFA,fit.measures = index)
         fitmeasures
       }
     ),

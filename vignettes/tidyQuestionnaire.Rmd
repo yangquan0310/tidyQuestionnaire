@@ -14,77 +14,77 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup, eval=FALSE}
+# Loading package
+```{r setup}
+devtools::install.github("yangquan0310/tidyQuestionnaire")
 library(tidyQuestionnaire)
 library(dplyr)
 ```
 
-```{r, eval=FALSE}
-data<-data.frame(
-  id=1:100,
-  a1=rbinom(100,7,0.3),
-  b2=rbinom(100,7,0.3),
-  c3=rbinom(100,7,0.3),
-  b1=rbinom(100,7,0.3),
-  b2=rbinom(100,7,0.3),
-  b3=rbinom(100,7,0.3)
-  )
-var<-c(id=1,a=2:4,d=5:7)
+# Data
+```{r}
+data(bfi, package = "psych")
 ```
 
-```{r, eval=FALSE}
-questionnaire<-Questionnaire(data,var)
+25 personality self report items taken from the International Personality Item Pool (ipip.ori.org) were included as part of the Synthetic Aperture Personality Assessment (SAPA) web based personality assessment project. The data from 2800 subjects are included here as a demonstration set for scale construction, factor analysis, and Item Response Theory analysis. Three additional demographic variables (sex, education, and age) are also included.
+
+```{r}
+str(bfi)
 ```
 
-# 计算各因子均值
-```{r, eval=FALSE}
-questionnaire$ComputeMean()
+## add id
+```{r}
+bfi<-tibble::add_column(bfi, id=1:nrow(bfi))
+var<-c(id=29,a=1:5,c=6:10,e=11:15,n=16:20,o=21:25)
 ```
 
-```{r, eval=FALSE}
-data_scale<-questionnaire$ScaleMean()
+# create questionnaire object
+```{r}
+questionnaire<-Questionnaire(bfi,var)
 ```
 
-```{r, eval=FALSE}
-str(data_scale)
+## compute factor mean
+```{r}
+data_mean<-questionnaire$ComputeMean()
 ```
 
-# 描述统计
-```{r, eval=FALSE}
+## describe data
+```{r}
 questionnaire$Describe()
 ```
 
-```{r, eval=FALSE}
+```{r}
 questionnaire$RunCfa()
 ```
-# 信度
 
-## 分因子一致性信度
-```{r, eval=FALSE}
+# reliability
+
+## reliability for every foctor
+```{r}
 questionnaire$Alpha()
 ```
-## 组合信度
-```{r, eval=FALSE}
+## composite reliability
+```{r}
 questionnaire$CR()
 ```
 
-# 效度
-## 收敛效度
-```{r, eval=FALSE}
+# 
+## convergent validity
+```{r}
 questionnaire$AVE()
 ```
 
-## 区分效度
-```{r, eval=FALSE}
+## discriminant validity
+```{r}
 questionnaire$Discriminant_Validity()
 ```
 
-## 结构效度
-```{r, eval=FALSE}
+## construct validity
+```{r}
 questionnaire$Fitmeasures()
 ```
 
-## 因子载荷
-```{r, eval=FALSE}
+## loading
+```{r}
 questionnaire$Loadings()
 ```
