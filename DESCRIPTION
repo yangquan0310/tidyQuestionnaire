@@ -15,7 +15,7 @@ Suggests:
     rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
-URL: https://github.com/yangquan0310/tidyQuestionnaire
+URL: https://github.com/yangquan0310/tidyQuestionnaire, https://yangquan0310.github.io/tidyQuestionnaire/
 BugReports: https://github.com/yangquan0310/tidyQuestionnaire/issues
 VignetteBuilder: knitr
 Imports: 
@@ -24,4 +24,3 @@ Imports:
     psych,
     semTools,
     tidySEM
-
