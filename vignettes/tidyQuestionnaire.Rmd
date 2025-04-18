@@ -5,6 +5,8 @@ vignette: >
   %\VignetteIndexEntry{tidyQuestionnaire}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+bibliography: reference.bib
+csl: apa.csl
 ---
 
 ```{r, include = FALSE}
@@ -54,16 +56,20 @@ str(data_mean)
 questionnaire$Describe()
 ```
 
-```{r}
-questionnaire$RunCfa()
-```
-# item analysis
+# Item analysis
 
 ```{r}
 questionnaire$ItemAnalysis()
 ```
 
+The project analysis employs Item Response Theory (IRT), which can utilize the Generalized Rating Scale Model (GRM) to estimate item parameters [@rizopoulos_ltm_2006]. This model assumes that each item is associated with an underlying continuous variable (θ), which is related to the probability of responding to the item. The GRM model can be used to assess the difficulty and discrimination of items.
+
+
 # Reliability
+
+```{r}
+questionnaire$RunCfa()
+```
 
 ## Cronbach's alpha
 ```{r}
@@ -74,17 +80,21 @@ questionnaire$Alpha()
 questionnaire$CR()
 ```
 
+Composite reliability is higher than 0.6 [@fornell_evaluating_1981]。
+
 # Validity
 
 ## Convergent validity
 ```{r}
 questionnaire$AVE()
 ```
+Average Variance Extracted (AVE) is higher than 0.5 [@fornell_evaluating_1981]。
 
 ## Discriminant validity
 ```{r}
 questionnaire$Discriminant_Validity()
 ```
+The Fornell-Larcker criterion is a widely used method for assessing discriminant validity[@fornell_evaluating_1981]. Its core principle is that the square root of the Average Variance Extracted (AVE) for each construct should be greater than the correlation coefficients between that construct and all other constructs
 
 ## Construct validity
 ```{r}
@@ -95,3 +105,5 @@ questionnaire$Fitmeasures()
 ```{r}
 questionnaire$Loadings()
 ```
+
+# References
