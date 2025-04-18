@@ -1,0 +1,90 @@
+---
+title: "Questionnaire"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Questionnaire}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, eval=FALSE}
+library(QuestionnaireProcessing)
+library(dplyr)
+```
+
+```{r, eval=FALSE}
+data<-data.frame(
+  id=1:100,
+  a1=rbinom(100,7,0.3),
+  b2=rbinom(100,7,0.3),
+  c3=rbinom(100,7,0.3),
+  b1=rbinom(100,7,0.3),
+  b2=rbinom(100,7,0.3),
+  b3=rbinom(100,7,0.3)
+  )
+var<-c(id=1,a=2:4,d=5:7)
+```
+
+```{r, eval=FALSE}
+questionnaire<-Questionnaire(data,var)
+```
+
+# 计算各因子均值
+```{r, eval=FALSE}
+questionnaire$ComputeMean()
+```
+
+```{r, eval=FALSE}
+data_scale<-questionnaire$ScaleMean()
+```
+
+```{r, eval=FALSE}
+str(data_scale)
+```
+
+# 描述统计
+```{r, eval=FALSE}
+questionnaire$Describe()
+```
+
+```{r, eval=FALSE}
+questionnaire$RunCfa()
+```
+# 信度
+
+## 分因子一致性信度
+```{r, eval=FALSE}
+questionnaire$Alpha()
+```
+## 组合信度
+```{r, eval=FALSE}
+questionnaire$CR()
+```
+
+# 效度
+## 收敛效度
+```{r, eval=FALSE}
+questionnaire$AVE()
+```
+
+## 区分效度
+```{r, eval=FALSE}
+questionnaire$Discriminant_Validity()
+```
+
+## 结构效度
+```{r, eval=FALSE}
+questionnaire$Fitmeasures()
+```
+
+## 因子载荷
+```{r, eval=FALSE}
+questionnaire$Loadings()
+```
