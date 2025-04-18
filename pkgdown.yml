@@ -3,7 +3,7 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   tidyQuestionnaire: tidyQuestionnaire.html
-last_built: 2025-04-18T04:46Z
+last_built: 2025-04-18T05:01Z
 urls:
   reference: https://yangquan0310.github.io/tidyQuestionnaire/reference
   article: https://yangquan0310.github.io/tidyQuestionnaire/articles

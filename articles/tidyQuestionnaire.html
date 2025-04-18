@@ -82,14 +82,9 @@
 <code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"yangquan0310/tidyQuestionnaire"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Using github PAT from envvar GITHUB_PAT. Use `gitcreds::gitcreds_set()` and unset GITHUB_PAT in .Renviron (or elsewhere) if you want to use the more secure git credential store instead.</span></span>
 <span><span class="co">#&gt; Downloading GitHub repo yangquan0310/tidyQuestionnaire@HEAD</span></span>
-<span><span class="co">#&gt; cpp11     (NA -&gt; 0.5.2    ) [CRAN]</span></span>
-<span><span class="co">#&gt; RcppEigen (NA -&gt; 0.3.4.0.2) [CRAN]</span></span>
-<span><span class="co">#&gt; BH        (NA -&gt; 1.87.0-1 ) [CRAN]</span></span>
-<span><span class="co">#&gt; Installing 3 packages: cpp11, RcppEigen, BH</span></span>
-<span><span class="co">#&gt; Installing packages into '/home/runner/work/_temp/Library'</span></span>
-<span><span class="co">#&gt; (as 'lib' is unspecified)</span></span>
+<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="color: #00BBBB;">R CMD build</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; * checking for file ‘/tmp/RtmpXSkUx8/remotes2261746239db/yangquan0310-tidyQuestionnaire-1f3a812/DESCRIPTION’ ... OK</span></span>
+<span><span class="co">#&gt; * checking for file ‘/tmp/RtmpwsE9xS/remotes21b555e8022d/yangquan0310-tidyQuestionnaire-4784080/DESCRIPTION’ ... OK</span></span>
 <span><span class="co">#&gt; * preparing ‘tidyQuestionnaire’:</span></span>
 <span><span class="co">#&gt; * checking DESCRIPTION meta-information ... OK</span></span>
 <span><span class="co">#&gt; * checking for LF line-endings in source and make files and shell scripts</span></span>
@@ -169,7 +164,15 @@ education, and age) are also included.</p>
 <h3 id="compute-factor-mean">compute factor mean<a class="anchor" aria-label="anchor" href="#compute-factor-mean"></a>
 </h3>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">data_mean</span><span class="op">&lt;-</span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">ComputeMean</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">data_mean</span><span class="op">&lt;-</span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">ComputeMean</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">data_mean</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 'data.frame':    2800 obs. of  6 variables:</span></span>
+<span><span class="co">#&gt;  $ id: num  1 2 3 4 5 6 7 8 9 10 ...</span></span>
+<span><span class="co">#&gt;  $ a : num  3.4 3.6 4.4 4.8 3.4 5.6 4 2.8 3.8 4.8 ...</span></span>
+<span><span class="co">#&gt;  $ c : num  3.2 4 4 4.2 3.6 4.4 3.6 3 4.8 4 ...</span></span>
+<span><span class="co">#&gt;  $ e : num  3.4 3 3.8 4 3.6 4 4.2 3.2 3.75 3.6 ...</span></span>
+<span><span class="co">#&gt;  $ n : num  2.8 3.8 3.6 2.8 3.2 3 1.4 4.2 3.6 4.2 ...</span></span>
+<span><span class="co">#&gt;  $ o : num  3.8 3.2 3.6 3.6 3.2 3.8 3.8 3.4 5 3.6 ...</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="describe-data">describe data<a class="anchor" aria-label="anchor" href="#describe-data"></a>
@@ -187,39 +190,72 @@ education, and age) are also included.</p>
 </div>
 </div>
 <div class="section level2">
-<h2 id="reliability">reliability<a class="anchor" aria-label="anchor" href="#reliability"></a>
+<h2 id="item-analysis">item analysis<a class="anchor" aria-label="anchor" href="#item-analysis"></a>
+</h2>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">ItemAnalysis</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;     Extrmt1 Extrmt2 Extrmt3 Extrmt4 Extrmt5 Dscrmn</span></span>
+<span><span class="co">#&gt; a_1  -1.478   1.144   2.620   4.480   7.350  0.491</span></span>
+<span><span class="co">#&gt; a_2   4.044   2.795   2.130   0.850  -0.824 -1.157</span></span>
+<span><span class="co">#&gt; a_3   2.988   2.076   1.508   0.524  -0.926 -1.417</span></span>
+<span><span class="co">#&gt; a_4   3.802   2.522   1.883   0.801  -0.459 -0.885</span></span>
+<span><span class="co">#&gt; a_5   3.056   1.989   1.347   0.384  -0.961 -1.622</span></span>
+<span><span class="co">#&gt; c_1   5.678   3.811   2.416   0.546  -2.090 -0.673</span></span>
+<span><span class="co">#&gt; c_2   5.592   3.366   2.090   0.299  -2.366 -0.641</span></span>
+<span><span class="co">#&gt; c_3   6.097   3.563   2.227   0.063  -2.861 -0.595</span></span>
+<span><span class="co">#&gt; c_4  -1.226   0.372   1.337   2.719   4.617  0.888</span></span>
+<span><span class="co">#&gt; c_5  -1.874  -0.569   0.072   1.267   2.674  0.928</span></span>
+<span><span class="co">#&gt; e_1  -1.460  -0.117   0.632   1.611   2.919  0.912</span></span>
+<span><span class="co">#&gt; e_2  -1.277  -0.213   0.235   1.106   2.011  1.527</span></span>
+<span><span class="co">#&gt; e_3   2.562   1.551   0.787  -0.397  -1.799 -1.416</span></span>
+<span><span class="co">#&gt; e_4   2.492   1.578   1.040   0.369  -0.944 -1.545</span></span>
+<span><span class="co">#&gt; e_5   3.210   2.041   1.295   0.248  -1.285 -1.247</span></span>
+<span><span class="co">#&gt; n_1  -1.932  -0.169   0.859   2.381   4.188  0.659</span></span>
+<span><span class="co">#&gt; n_2  -3.442  -1.342  -0.250   1.600   3.686  0.625</span></span>
+<span><span class="co">#&gt; n_3  -2.719  -0.656   0.293   1.979   4.047  0.597</span></span>
+<span><span class="co">#&gt; n_4  -1.932  -0.430   0.298   1.530   2.813  0.942</span></span>
+<span><span class="co">#&gt; n_5  -2.225  -0.169   0.897   2.586   4.421  0.559</span></span>
+<span><span class="co">#&gt; o_1   7.002   4.515   2.960   0.985  -1.129 -0.721</span></span>
+<span><span class="co">#&gt; o_2  -2.598   0.528   2.211   4.712   7.677  0.356</span></span>
+<span><span class="co">#&gt; o_3   4.349   3.022   1.849   0.166  -1.819 -0.901</span></span>
+<span><span class="co">#&gt; o_4 -94.595 -64.743 -48.291 -21.386  10.953  0.041</span></span>
+<span><span class="co">#&gt; o_5  -2.507   0.887   3.116   5.644   9.014  0.414</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="reliability">Reliability<a class="anchor" aria-label="anchor" href="#reliability"></a>
 </h2>
 <div class="section level3">
-<h3 id="reliability-for-every-foctor">reliability for every foctor<a class="anchor" aria-label="anchor" href="#reliability-for-every-foctor"></a>
+<h3 id="cronbachs-alpha">Cronbach’s alpha<a class="anchor" aria-label="anchor" href="#cronbachs-alpha"></a>
 </h3>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">Alpha</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     a     c     e     n     o </span></span>
 <span><span class="co">#&gt; 0.606 0.005 0.046 0.808 0.038</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="composite-reliability">composite reliability<a class="anchor" aria-label="anchor" href="#composite-reliability"></a>
+<h3 id="composite-reliability">Composite reliability<a class="anchor" aria-label="anchor" href="#composite-reliability"></a>
 </h3>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">CR</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;          a          c          e          n          o </span></span>
 <span><span class="co">#&gt; 0.61528221 0.04056654 0.11382210 0.81989304 0.09993916</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
-<h2 id="section"></h2>
+<h2 id="validity">Validity<a class="anchor" aria-label="anchor" href="#validity"></a>
+</h2>
 <div class="section level3">
-<h3 id="convergent-validity">convergent validity<a class="anchor" aria-label="anchor" href="#convergent-validity"></a>
+<h3 id="convergent-validity">Convergent validity<a class="anchor" aria-label="anchor" href="#convergent-validity"></a>
 </h3>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">AVE</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     a     c     e     n     o </span></span>
 <span><span class="co">#&gt; 0.350 0.372 0.403 0.481 0.245</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="discriminant-validity">discriminant validity<a class="anchor" aria-label="anchor" href="#discriminant-validity"></a>
+<h3 id="discriminant-validity">Discriminant validity<a class="anchor" aria-label="anchor" href="#discriminant-validity"></a>
 </h3>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">Discriminant_Validity</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;       a    c    e    n    o</span></span>
 <span><span class="co">#&gt; a  0.59   NA   NA   NA   NA</span></span>
@@ -229,17 +265,17 @@ education, and age) are also included.</p>
 <span><span class="co">#&gt; o  0.20 0.26 0.26 0.16 0.49</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="construct-validity">construct validity<a class="anchor" aria-label="anchor" href="#construct-validity"></a>
+<h3 id="construct-validity">Construct validity<a class="anchor" aria-label="anchor" href="#construct-validity"></a>
 </h3>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">Fitmeasures</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    chisq       df   pvalue      cfi      tli    rmsea     srmr </span></span>
 <span><span class="co">#&gt; 4165.467  265.000    0.000    0.782    0.754    0.078    0.073</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="loading">loading<a class="anchor" aria-label="anchor" href="#loading"></a>
+<h3 id="loading">Loading<a class="anchor" aria-label="anchor" href="#loading"></a>
 </h3>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">Loadings</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    variable items Loadings    se       z pvalue</span></span>
 <span><span class="co">#&gt; 1         a   a_1    0.344 0.020  16.900      0</span></span>
