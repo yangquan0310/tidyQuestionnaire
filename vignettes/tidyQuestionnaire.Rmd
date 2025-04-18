@@ -60,7 +60,7 @@ questionnaire$RunCfa()
 # item analysis
 
 ```{r}
-questionnaire$itemAnalysis()
+questionnaire$ItemAnalysis()
 ```
 
 # Reliability
