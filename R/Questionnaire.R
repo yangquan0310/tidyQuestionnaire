@@ -39,8 +39,8 @@ Questionnaire <- function(data,var){
           mutate(across(where(is.numeric) & !matches("id"), ~ (.x-mean(.x, na.rm = TRUE))/sd(.x, na.rm = TRUE)))
         return(data)
       },
-      itemAnalysis=function(){
-        ia=ltm::grm(data[,-1])
+      ItemAnalysis=function(){
+        ia=ltm::grm(self$Data[,-1])
         coef(ia)
       },
       RunCfa=function(){

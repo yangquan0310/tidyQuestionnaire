@@ -46,6 +46,7 @@ questionnaire<-Questionnaire(bfi,var)
 ## compute factor mean
 ```{r}
 data_mean<-questionnaire$ComputeMean()
+str(data_mean)
 ```
 
 ## describe data
@@ -56,35 +57,41 @@ questionnaire$Describe()
 ```{r}
 questionnaire$RunCfa()
 ```
+# item analysis
 
-# reliability
+```{r}
+questionnaire$itemAnalysis()
+```
 
-## reliability for every foctor
+# Reliability
+
+## Cronbach's alpha
 ```{r}
 questionnaire$Alpha()
 ```
-## composite reliability
+## Composite reliability
 ```{r}
 questionnaire$CR()
 ```
 
-# 
-## convergent validity
+# Validity
+
+## Convergent validity
 ```{r}
 questionnaire$AVE()
 ```
 
-## discriminant validity
+## Discriminant validity
 ```{r}
 questionnaire$Discriminant_Validity()
 ```
 
-## construct validity
+## Construct validity
 ```{r}
 questionnaire$Fitmeasures()
 ```
 
-## loading
+## Loading
 ```{r}
 questionnaire$Loadings()
 ```
