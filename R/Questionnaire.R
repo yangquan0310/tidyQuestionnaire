@@ -40,7 +40,7 @@ Questionnaire <- function(data,var){
         return(data)
       },
       itemAnalysis=function(){
-        ia=grm(data[,-1])
+        ia=ltm::grm(data[,-1])
         coef(ia)
       },
       RunCfa=function(){

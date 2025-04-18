@@ -21,6 +21,7 @@ VignetteBuilder: knitr
 Imports: 
     dplyr,
     lavaan,
+    ltm,
     psych,
     semTools,
     tidySEM
