@@ -75,82 +75,198 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yangquan0310/tidyQuestionnaire" class="external-link">tidyQuestionnaire</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">data</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
-<span>  id<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span>,</span>
-<span>  a1<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html" class="external-link">rbinom</a></span><span class="op">(</span><span class="fl">100</span>,<span class="fl">7</span>,<span class="fl">0.3</span><span class="op">)</span>,</span>
-<span>  b2<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html" class="external-link">rbinom</a></span><span class="op">(</span><span class="fl">100</span>,<span class="fl">7</span>,<span class="fl">0.3</span><span class="op">)</span>,</span>
-<span>  c3<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html" class="external-link">rbinom</a></span><span class="op">(</span><span class="fl">100</span>,<span class="fl">7</span>,<span class="fl">0.3</span><span class="op">)</span>,</span>
-<span>  b1<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html" class="external-link">rbinom</a></span><span class="op">(</span><span class="fl">100</span>,<span class="fl">7</span>,<span class="fl">0.3</span><span class="op">)</span>,</span>
-<span>  b2<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html" class="external-link">rbinom</a></span><span class="op">(</span><span class="fl">100</span>,<span class="fl">7</span>,<span class="fl">0.3</span><span class="op">)</span>,</span>
-<span>  b3<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html" class="external-link">rbinom</a></span><span class="op">(</span><span class="fl">100</span>,<span class="fl">7</span>,<span class="fl">0.3</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="va">var</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>id<span class="op">=</span><span class="fl">1</span>,a<span class="op">=</span><span class="fl">2</span><span class="op">:</span><span class="fl">4</span>,d<span class="op">=</span><span class="fl">5</span><span class="op">:</span><span class="fl">7</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">questionnaire</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/Questionnaire.html">Questionnaire</a></span><span class="op">(</span><span class="va">data</span>,<span class="va">var</span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
-<h2 id="计算各因子均值">计算各因子均值<a class="anchor" aria-label="anchor" href="#%E8%AE%A1%E7%AE%97%E5%90%84%E5%9B%A0%E5%AD%90%E5%9D%87%E5%80%BC"></a>
+<h2 id="loading-package">Loading package<a class="anchor" aria-label="anchor" href="#loading-package"></a>
 </h2>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">ComputeMean</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">data_scale</span><span class="op">&lt;-</span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">ScaleMean</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">data_scale</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"yangquan0310/tidyQuestionnaire"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Using github PAT from envvar GITHUB_PAT. Use `gitcreds::gitcreds_set()` and unset GITHUB_PAT in .Renviron (or elsewhere) if you want to use the more secure git credential store instead.</span></span>
+<span><span class="co">#&gt; Downloading GitHub repo yangquan0310/tidyQuestionnaire@HEAD</span></span>
+<span><span class="co">#&gt; cpp11     (NA -&gt; 0.5.2    ) [CRAN]</span></span>
+<span><span class="co">#&gt; RcppEigen (NA -&gt; 0.3.4.0.2) [CRAN]</span></span>
+<span><span class="co">#&gt; BH        (NA -&gt; 1.87.0-1 ) [CRAN]</span></span>
+<span><span class="co">#&gt; Installing 3 packages: cpp11, RcppEigen, BH</span></span>
+<span><span class="co">#&gt; Installing packages into '/home/runner/work/_temp/Library'</span></span>
+<span><span class="co">#&gt; (as 'lib' is unspecified)</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="color: #00BBBB;">R CMD build</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────────</span></span></span>
+<span><span class="co">#&gt; * checking for file ‘/tmp/RtmpXSkUx8/remotes2261746239db/yangquan0310-tidyQuestionnaire-1f3a812/DESCRIPTION’ ... OK</span></span>
+<span><span class="co">#&gt; * preparing ‘tidyQuestionnaire’:</span></span>
+<span><span class="co">#&gt; * checking DESCRIPTION meta-information ... OK</span></span>
+<span><span class="co">#&gt; * checking for LF line-endings in source and make files and shell scripts</span></span>
+<span><span class="co">#&gt; * checking for empty or unneeded directories</span></span>
+<span><span class="co">#&gt; Omitted ‘LazyData’ from DESCRIPTION</span></span>
+<span><span class="co">#&gt; * building ‘tidyQuestionnaire_0.1.0.tar.gz’</span></span>
+<span><span class="co">#&gt; Installing package into '/home/runner/work/_temp/Library'</span></span>
+<span><span class="co">#&gt; (as 'lib' is unspecified)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yangquan0310/tidyQuestionnaire" class="external-link">tidyQuestionnaire</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     filter, lag</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="描述统计">描述统计<a class="anchor" aria-label="anchor" href="#%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1"></a>
+<h2 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
 </h2>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">bfi</span>, package <span class="op">=</span> <span class="st">"psych"</span><span class="op">)</span></span></code></pre></div>
+<p>25 personality self report items taken from the International
+Personality Item Pool (ipip.ori.org) were included as part of the
+Synthetic Aperture Personality Assessment (SAPA) web based personality
+assessment project. The data from 2800 subjects are included here as a
+demonstration set for scale construction, factor analysis, and Item
+Response Theory analysis. Three additional demographic variables (sex,
+education, and age) are also included.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">bfi</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 'data.frame':    2800 obs. of  28 variables:</span></span>
+<span><span class="co">#&gt;  $ A1       : int  2 2 5 4 2 6 2 4 4 2 ...</span></span>
+<span><span class="co">#&gt;  $ A2       : int  4 4 4 4 3 6 5 3 3 5 ...</span></span>
+<span><span class="co">#&gt;  $ A3       : int  3 5 5 6 3 5 5 1 6 6 ...</span></span>
+<span><span class="co">#&gt;  $ A4       : int  4 2 4 5 4 6 3 5 3 6 ...</span></span>
+<span><span class="co">#&gt;  $ A5       : int  4 5 4 5 5 5 5 1 3 5 ...</span></span>
+<span><span class="co">#&gt;  $ C1       : int  2 5 4 4 4 6 5 3 6 6 ...</span></span>
+<span><span class="co">#&gt;  $ C2       : int  3 4 5 4 4 6 4 2 6 5 ...</span></span>
+<span><span class="co">#&gt;  $ C3       : int  3 4 4 3 5 6 4 4 3 6 ...</span></span>
+<span><span class="co">#&gt;  $ C4       : int  4 3 2 5 3 1 2 2 4 2 ...</span></span>
+<span><span class="co">#&gt;  $ C5       : int  4 4 5 5 2 3 3 4 5 1 ...</span></span>
+<span><span class="co">#&gt;  $ E1       : int  3 1 2 5 2 2 4 3 5 2 ...</span></span>
+<span><span class="co">#&gt;  $ E2       : int  3 1 4 3 2 1 3 6 3 2 ...</span></span>
+<span><span class="co">#&gt;  $ E3       : int  3 6 4 4 5 6 4 4 NA 4 ...</span></span>
+<span><span class="co">#&gt;  $ E4       : int  4 4 4 4 4 5 5 2 4 5 ...</span></span>
+<span><span class="co">#&gt;  $ E5       : int  4 3 5 4 5 6 5 1 3 5 ...</span></span>
+<span><span class="co">#&gt;  $ N1       : int  3 3 4 2 2 3 1 6 5 5 ...</span></span>
+<span><span class="co">#&gt;  $ N2       : int  4 3 5 5 3 5 2 3 5 5 ...</span></span>
+<span><span class="co">#&gt;  $ N3       : int  2 3 4 2 4 2 2 2 2 5 ...</span></span>
+<span><span class="co">#&gt;  $ N4       : int  2 5 2 4 4 2 1 6 3 2 ...</span></span>
+<span><span class="co">#&gt;  $ N5       : int  3 5 3 1 3 3 1 4 3 4 ...</span></span>
+<span><span class="co">#&gt;  $ O1       : int  3 4 4 3 3 4 5 3 6 5 ...</span></span>
+<span><span class="co">#&gt;  $ O2       : int  6 2 2 3 3 3 2 2 6 1 ...</span></span>
+<span><span class="co">#&gt;  $ O3       : int  3 4 5 4 4 5 5 4 6 5 ...</span></span>
+<span><span class="co">#&gt;  $ O4       : int  4 3 5 3 3 6 6 5 6 5 ...</span></span>
+<span><span class="co">#&gt;  $ O5       : int  3 3 2 5 3 1 1 3 1 2 ...</span></span>
+<span><span class="co">#&gt;  $ gender   : int  1 2 2 2 1 2 1 1 1 2 ...</span></span>
+<span><span class="co">#&gt;  $ education: int  NA NA NA NA NA 3 NA 2 1 NA ...</span></span>
+<span><span class="co">#&gt;  $ age      : int  16 18 17 17 17 21 18 19 19 17 ...</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="add-id">add id<a class="anchor" aria-label="anchor" href="#add-id"></a>
+</h3>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">bfi</span><span class="op">&lt;-</span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/add_column.html" class="external-link">add_column</a></span><span class="op">(</span><span class="va">bfi</span>, id<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">bfi</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">var</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>id<span class="op">=</span><span class="fl">29</span>,a<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,c<span class="op">=</span><span class="fl">6</span><span class="op">:</span><span class="fl">10</span>,e<span class="op">=</span><span class="fl">11</span><span class="op">:</span><span class="fl">15</span>,n<span class="op">=</span><span class="fl">16</span><span class="op">:</span><span class="fl">20</span>,o<span class="op">=</span><span class="fl">21</span><span class="op">:</span><span class="fl">25</span><span class="op">)</span></span></code></pre></div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="create-questionnaire-object">create questionnaire object<a class="anchor" aria-label="anchor" href="#create-questionnaire-object"></a>
+</h2>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">questionnaire</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/Questionnaire.html">Questionnaire</a></span><span class="op">(</span><span class="va">bfi</span>,<span class="va">var</span><span class="op">)</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="compute-factor-mean">compute factor mean<a class="anchor" aria-label="anchor" href="#compute-factor-mean"></a>
+</h3>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_mean</span><span class="op">&lt;-</span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">ComputeMean</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="describe-data">describe data<a class="anchor" aria-label="anchor" href="#describe-data"></a>
+</h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">Describe</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">Describe</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Mean   SD     a    c    e    n</span></span>
+<span><span class="co">#&gt; a 4.22 0.74    NA   NA   NA   NA</span></span>
+<span><span class="co">#&gt; c 3.80 0.56  0.07   NA   NA   NA</span></span>
+<span><span class="co">#&gt; e 3.79 0.54  0.30 0.18   NA   NA</span></span>
+<span><span class="co">#&gt; n 3.16 1.20 -0.13 0.25 0.04   NA</span></span>
+<span><span class="co">#&gt; o 3.87 0.56  0.20 0.26 0.26 0.16</span></span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">RunCfa</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
+</div>
 <div class="section level2">
-<h2 id="信度">信度<a class="anchor" aria-label="anchor" href="#%E4%BF%A1%E5%BA%A6"></a>
+<h2 id="reliability">reliability<a class="anchor" aria-label="anchor" href="#reliability"></a>
 </h2>
 <div class="section level3">
-<h3 id="分因子一致性信度">分因子一致性信度<a class="anchor" aria-label="anchor" href="#%E5%88%86%E5%9B%A0%E5%AD%90%E4%B8%80%E8%87%B4%E6%80%A7%E4%BF%A1%E5%BA%A6"></a>
+<h3 id="reliability-for-every-foctor">reliability for every foctor<a class="anchor" aria-label="anchor" href="#reliability-for-every-foctor"></a>
 </h3>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">Alpha</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">Alpha</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;     a     c     e     n     o </span></span>
+<span><span class="co">#&gt; 0.606 0.005 0.046 0.808 0.038</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="组合信度">组合信度<a class="anchor" aria-label="anchor" href="#%E7%BB%84%E5%90%88%E4%BF%A1%E5%BA%A6"></a>
+<h3 id="composite-reliability">composite reliability<a class="anchor" aria-label="anchor" href="#composite-reliability"></a>
 </h3>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">CR</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">CR</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;          a          c          e          n          o </span></span>
+<span><span class="co">#&gt; 0.61528221 0.04056654 0.11382210 0.81989304 0.09993916</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
-<h2 id="效度">效度<a class="anchor" aria-label="anchor" href="#%E6%95%88%E5%BA%A6"></a>
-</h2>
+<h2 id="section"></h2>
 <div class="section level3">
-<h3 id="收敛效度">收敛效度<a class="anchor" aria-label="anchor" href="#%E6%94%B6%E6%95%9B%E6%95%88%E5%BA%A6"></a>
+<h3 id="convergent-validity">convergent validity<a class="anchor" aria-label="anchor" href="#convergent-validity"></a>
 </h3>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">AVE</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">AVE</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;     a     c     e     n     o </span></span>
+<span><span class="co">#&gt; 0.350 0.372 0.403 0.481 0.245</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="区分效度">区分效度<a class="anchor" aria-label="anchor" href="#%E5%8C%BA%E5%88%86%E6%95%88%E5%BA%A6"></a>
+<h3 id="discriminant-validity">discriminant validity<a class="anchor" aria-label="anchor" href="#discriminant-validity"></a>
 </h3>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">Discriminant_Validity</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">Discriminant_Validity</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;       a    c    e    n    o</span></span>
+<span><span class="co">#&gt; a  0.59   NA   NA   NA   NA</span></span>
+<span><span class="co">#&gt; c  0.07 0.61   NA   NA   NA</span></span>
+<span><span class="co">#&gt; e  0.30 0.18 0.63   NA   NA</span></span>
+<span><span class="co">#&gt; n -0.13 0.25 0.04 0.69   NA</span></span>
+<span><span class="co">#&gt; o  0.20 0.26 0.26 0.16 0.49</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="结构效度">结构效度<a class="anchor" aria-label="anchor" href="#%E7%BB%93%E6%9E%84%E6%95%88%E5%BA%A6"></a>
+<h3 id="construct-validity">construct validity<a class="anchor" aria-label="anchor" href="#construct-validity"></a>
 </h3>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">Fitmeasures</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">Fitmeasures</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    chisq       df   pvalue      cfi      tli    rmsea     srmr </span></span>
+<span><span class="co">#&gt; 4165.467  265.000    0.000    0.782    0.754    0.078    0.073</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="因子载荷">因子载荷<a class="anchor" aria-label="anchor" href="#%E5%9B%A0%E5%AD%90%E8%BD%BD%E8%8D%B7"></a>
+<h3 id="loading">loading<a class="anchor" aria-label="anchor" href="#loading"></a>
 </h3>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">Loadings</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">questionnaire</span><span class="op">$</span><span class="fu">Loadings</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    variable items Loadings    se       z pvalue</span></span>
+<span><span class="co">#&gt; 1         a   a_1    0.344 0.020  16.900      0</span></span>
+<span><span class="co">#&gt; 2         a   a_2   -0.648 0.015 -43.491      0</span></span>
+<span><span class="co">#&gt; 3         a   a_3   -0.749 0.013 -58.224      0</span></span>
+<span><span class="co">#&gt; 4         a   a_4   -0.510 0.018 -28.813      0</span></span>
+<span><span class="co">#&gt; 5         a   a_5   -0.687 0.014 -48.803      0</span></span>
+<span><span class="co">#&gt; 6         c   c_1    0.551 0.018  31.124      0</span></span>
+<span><span class="co">#&gt; 7         c   c_2    0.592 0.017  34.955      0</span></span>
+<span><span class="co">#&gt; 8         c   c_3    0.546 0.018  30.701      0</span></span>
+<span><span class="co">#&gt; 9         c   c_4   -0.702 0.015 -46.896      0</span></span>
+<span><span class="co">#&gt; 10        c   c_5   -0.620 0.016 -37.795      0</span></span>
+<span><span class="co">#&gt; 11        e   e_1    0.564 0.016  34.335      0</span></span>
+<span><span class="co">#&gt; 12        e   e_2    0.699 0.013  51.772      0</span></span>
+<span><span class="co">#&gt; 13        e   e_3   -0.627 0.015 -41.569      0</span></span>
+<span><span class="co">#&gt; 14        e   e_4   -0.703 0.013 -52.459      0</span></span>
+<span><span class="co">#&gt; 15        e   e_5   -0.553 0.017 -33.242      0</span></span>
+<span><span class="co">#&gt; 16        n   n_1    0.825 0.010  86.145      0</span></span>
+<span><span class="co">#&gt; 17        n   n_2    0.803 0.010  79.945      0</span></span>
+<span><span class="co">#&gt; 18        n   n_3    0.721 0.012  60.291      0</span></span>
+<span><span class="co">#&gt; 19        n   n_4    0.573 0.015  37.045      0</span></span>
+<span><span class="co">#&gt; 20        n   n_5    0.503 0.017  29.707      0</span></span>
+<span><span class="co">#&gt; 21        o   o_1    0.564 0.020  28.789      0</span></span>
+<span><span class="co">#&gt; 22        o   o_2   -0.418 0.021 -19.570      0</span></span>
+<span><span class="co">#&gt; 23        o   o_3    0.724 0.019  38.777      0</span></span>
+<span><span class="co">#&gt; 24        o   o_4    0.233 0.023   9.991      0</span></span>
+<span><span class="co">#&gt; 25        o   o_5   -0.461 0.021 -22.157      0</span></span></code></pre></div>
 </div>
 </div>
   </div>
