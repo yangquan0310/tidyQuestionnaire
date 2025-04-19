@@ -3,14 +3,60 @@
 \name{Questionnaire}
 \alias{Questionnaire}
 \title{Questionnaire}
+\usage{
+Questionnaire(data, var)
+}
 \arguments{
-\item{data}{数据框}
+\item{data}{数据框，包含问卷调查数据。}
 
-\item{var}{变量列表}
+\item{var}{变量列表，指定需要分析的变量名称。}
 }
 \value{
-问卷分析对象
+返回一个问卷分析对象，包含问卷数据、变量信息以及多种分析方法。
 }
 \description{
-Questionnaire
+创建一个问卷分析对象，用于对问卷数据进行多种统计分析，包括均值计算、描述性统计、信度分析、效度分析等。
+}
+\details{
+该函数基于R6类实现，创建的问卷分析对象具有以下功能：
+\itemize{
+  \item \code{ComputeMean}：计算指定变量的均值。
+  \item \code{Describe}：生成描述性统计结果，包括均值、标准差和相关矩阵。
+  \item \code{ScaleMean}：对数据进行标准化处理。
+  \item \code{ItemAnalysis}：进行项目分析，使用\code{ltm::grm}函数。
+  \item \code{RunCfa}：运行验证性因子分析（CFA）。
+  \item \code{Alpha}：计算Cronbach's α信度系数。
+  \item \code{AVE}：计算平均方差提取量（AVE）。
+  \item \code{CR}：计算组合信度（CR）。
+  \item \code{Discriminant_Validity}：评估判别效度。
+  \item \code{Loadings}：获取因子载荷。
+  \item \code{Fitmeasures}：获取CFA模型的拟合指标。
+}
+}
+\examples{
+# 示例数据
+data(bfi, package = "psych")
+bfi<-tibble::add_column(bfi, id=1:nrow(bfi))
+var<-c(id=29,a=1:5,c=6:10,e=11:15,n=16:20,o=21:25)
+
+# 创建问卷分析对象
+questionnaire <- Questionnaire(bfi, var)
+
+# 计算均值
+questionnaire$ComputeMean()
+
+# 生成描述性统计结果
+questionnaire$Describe()
+
+# 运行验证性因子分析
+questionnaire$RunCfa()
+
+# 计算Cronbach's α信度系数
+questionnaire$Alpha()
+}
+\seealso{
+\code{\link{ltm::grm}}：用于项目分析的函数。
+\code{\link{semTools::compRelSEM}}：用于计算Cronbach's α信度系数的函数。
+\code{\link{semTools::AVE}}：用于计算平均方差提取量（AVE）的函数。
+\code{\link{lavaan::standardizedsolution}}：用于获取标准化解的函数。
 }

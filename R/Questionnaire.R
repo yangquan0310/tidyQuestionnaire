@@ -14,6 +14,9 @@ Questionnaire <- function(data,var){
       Variable  = NULL,
       DataMean = NULL,
       initialize = function(data,var){
+        if(! "id" %in% names(var)){
+          stop("请在定义var时使用 id 字段标明被试编号变量")
+        }
         self$Data = dplyr::select(data,dplyr::all_of(var))
         names(self$Data)=gsub("([a-zA-Z])([0-9])", "\\1_\\2", names(self$Data))
         self$Variable =names(self$Data)
@@ -40,7 +43,7 @@ Questionnaire <- function(data,var){
         return(data)
       },
       ItemAnalysis=function(){
-        ia=ltm::grm(self$Data[,-1])
+        ia=ltm::grm(dplyr::select(self$Data,-c("id")))
         coef(ia)
       },
       RunCfa=function(){
